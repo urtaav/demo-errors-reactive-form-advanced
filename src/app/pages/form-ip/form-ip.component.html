@@ -1,0 +1,80 @@
+<div class="container">
+    <h3>Student Form</h3>
+    <!-- <pre>
+        <p class="mb-1">Form Status: {{ ipForm.status }}</p>
+        <p class="mb-1">Form Value: {{ ipForm.value | json }}</p>
+        <p class="mb-1">firstName err: {{ firstName.errors | json }}</p>
+    </pre> -->
+    <form class="card formgrid grid" [formGroup]="ipForm" (ngSubmit)="onSubmit()">
+
+        <div class="field col-12 md:col-6">
+            <label htmlFor="firstname6">Firstname</label>
+            <input pInputText id="firstname6" type="text" class="w-full" formControlName="firstname"
+                [ngClass]="{'ng-invalid ng-dirty': firstName.errors && submitted}" minlength="4" maxlength="100">
+
+        </div>
+        <div class="field col-12 md:col-6">
+            <label htmlFor="lastname6">Lastname</label>
+            <input pInputText id="lastname6" type="text" class="w-full" formControlName="lastname"
+                [ngClass]="{'ng-invalid ng-dirty': lastName.errors && submitted}">
+        </div>
+        <div class="field col-12">
+            <label htmlFor="address">Address</label>
+            <textarea pInputTextarea id="address" type="text" rows="4" class="w-full" formControlName="address"
+                [ngClass]="{'ng-invalid ng-dirty': address.errors && submitted}"  maxlength="20"></textarea>
+        </div>
+        <div class="field col-12 md:col-6">
+            <label htmlFor="city">City</label>
+            <input pInputText id="city" type="text" class="w-full" formControlName="city"
+                [ngClass]="{'ng-invalid ng-dirty': city.errors && submitted}">
+        </div>
+        <div class="field col-12 md:col-3">
+            <label htmlFor="state">State</label>
+            <p-dropdown [options]="cities" formControlName="state" optionLabel="name" styleClass="w-full"
+                [autoDisplayFirst]="false" placeholder="--- Seleccionar ---"
+                [ngClass]="{'ng-invalid ng-dirty': state.errors && submitted}">
+            </p-dropdown>
+
+        </div>
+        <div class="field col-12 md:col-3">
+            <label htmlFor="zip">Zip</label>
+            <input pInputText id="zip" type="text" class="w-full" formControlName="zip"
+                [ngClass]="{'ng-invalid ng-dirty': zip.errors && submitted}">
+        </div>
+        <div class="field col-12">
+            <label htmlFor="observations">Observations</label>
+            <textarea pInputTextarea id="observations" type="text" rows="4" class="w-full" formControlName="observations"
+                [ngClass]="{'ng-invalid ng-dirty': observations.errors && submitted}"  maxlength="150" placeholder="(opcional)"></textarea>
+        </div>
+        <div class="field col-12 md:col-6">
+            <label htmlFor="email">Email</label>
+            <div class="p-inputgroup w-full">
+                <span class="p-inputgroup-addon">
+                    @
+                </span>
+                <input pInputText id="email" type="text" class="w-full" formControlName="email"
+                [ngClass]="{'ng-invalid ng-dirty': email.errors && submitted}">
+            </div>
+
+        </div>
+        <div class="field col-12 md:col-6">
+            <label htmlFor="web">Web</label>
+            <div class="p-inputgroup w-full">
+                <span class="p-inputgroup-addon">www</span>
+                <input pInputText id="web" type="text" class="w-full" formControlName="web"
+                [ngClass]="{'ng-invalid ng-dirty': web.errors && submitted}">
+            </div>
+
+    
+        </div>
+        <div class="field col-12 md:col-6">
+            <label htmlFor="date">Register date</label>
+            <p-calendar inputId="date" formControlName="date" [ngClass]="{'ng-invalid ng-dirty': date.errors && submitted}"
+            styleClass="w-full"></p-calendar>
+        </div>
+        <div class="col-12">
+            <button type="submit" pButton>Submit</button>
+        </div>
+        <p>{{ipForm.value | json }}</p>
+    </form>
+</div>
